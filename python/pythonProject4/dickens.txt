@@ -1,0 +1,20 @@
+	   
+  	if (pItem != NULL)
+    	cout << "found, " << *pItem << endl << endl;
+  	else
+    	cout << "not found! " << endl << endl;	
+	}
+	
+	c.clear();
+	test_moveable(vector<MyString>(),vector<MyStrNoMove>(), value);	
+}	
+}
+//---------------------------------------------------
+#include <list>
+#include <stdexcept>
+#include <string>
+#include <cstdlib> //abort()
+#include <cstdio>  //snprintf()
+#include <algorithm> //find()
+#include <iostream>
+#include <ctime> 
