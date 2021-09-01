@@ -2,6 +2,7 @@ import csv
 from matplotlib import pyplot as plt
 from datetime import datetime
 
+# csv file dealing
 filename = 'sitka_weather_2018_full.csv'
 with open(filename) as f:
     reader = csv.reader(f)
