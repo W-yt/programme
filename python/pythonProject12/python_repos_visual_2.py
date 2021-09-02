@@ -14,13 +14,17 @@ print("Total repositories:", response_dict['total_count'])
 
 # 探索有关仓库的信息(repo_dicts是结果中包含的仓库信息的字典)
 repo_dicts = response_dict['items']
-# # 这里打印的是请求中返回的stars最高的仓库的数量
-# print("Repositories returned:", len(repo_dicts))
+# 这里打印的是请求中返回的stars最高的仓库的数量
+print("Repositories returned:", len(repo_dicts))
 
-names, stars = [], []
+names, plot_dicts = [], []
 for repo_dict in repo_dicts:
     names.append(repo_dict['name'])
-    stars.append(repo_dict['stargazers_count'])
+    # 这里在添加了xlink索引之后，需要给label的的值转换成str才不会报错
+    plot_dict = {'value': repo_dict['stargazers_count'],
+                 'label': repo_dict['description'],
+                 'xlink': repo_dict['html_url']}
+    plot_dicts.append(plot_dict)
 
 # 可视化
 my_style = LS('#333399', base_style = LCS)
@@ -42,5 +46,5 @@ chart = pygal.Bar(my_config)
 chart.title = "Most-Starred Python Projects on Github"
 chart.x_labels = names
 # add中的第一个参数表示数据的标签(这里不需要)
-chart.add('', stars)
-chart.render_to_file('python_repos_visual.svg')
+chart.add('', plot_dicts)
+chart.render_to_file('python_repos_visual_2.svg')
